@@ -18,5 +18,10 @@ The developed project will be a CRUD for meetings.
 
 - npm install --save @angular/material @angular/cdk @angular/animations
 
-- ng add @angular/material 
+- ng add @angular/material
 
+## Creating the home component
+
+Inside the app-meeting folder, run the commands with npm
+
+- ng g c components/home
