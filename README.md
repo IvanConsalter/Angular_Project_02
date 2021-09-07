@@ -8,3 +8,15 @@ This project is based on a free course available at [udemy.com](https://www.udem
 
 The developed project will be a CRUD for meetings.
 
+## Creating a new Project
+
+- ng new (name project) 
+
+- ng new app-meeting
+
+## Installing Angular Material
+
+- npm install --save @angular/material @angular/cdk @angular/animations
+
+- ng add @angular/material 
+
