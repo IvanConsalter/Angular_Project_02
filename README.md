@@ -25,3 +25,9 @@ The developed project will be a CRUD for meetings.
 Inside the app-meeting folder, run the commands with npm
 
 - ng g c components/home
+
+## Creating the meeting-list component
+
+Inside the app-meeting folder, run the commands with npm
+
+- ng g c components/meeting-list
