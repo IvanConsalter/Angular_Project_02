@@ -31,3 +31,9 @@ Inside the app-meeting folder, run the commands with npm
 Inside the app-meeting folder, run the commands with npm
 
 - ng g c components/meeting-list
+
+## Creating the meeting-form component
+
+Inside the app-meeting folder, run the commands with npm
+
+- ng g c components/meeting-form
