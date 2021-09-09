@@ -35,6 +35,7 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="!meetingForm.valid" (click)="save()">Salvar</button>
+    <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
   </div>
 </form>

@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HomeComponent } from './components/home/home.component';
 import { MeetingListComponent } from './components/meeting-list/meeting-list.component';
 import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MeetingFormComponent } from './components/meeting-form/meeting-form.com
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
