@@ -12,7 +12,7 @@ export class MeetingService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'MOBILEBAASKEY': 'MTYwNTIxOTk3MzA2MkZyYW5jaXMgS2xheSBSb2NoYQ=='
+      'MOBILEBAASKEY': 'MTYzMTI5NjgzMDY5N0l2YW4gQ29uc2FsdGVy'
     }) 
   }
   constructor(
