@@ -21,7 +21,7 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="meetingDate">
     <th mat-header-cell *matHeaderCellDef> Data da Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingDate}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.meetingDate | localDateTime}} </td>
   </ng-container>
 
   <ng-container matColumnDef="meetingTime">

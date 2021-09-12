@@ -22,13 +22,15 @@ import { HomeComponent } from './components/home/home.component';
 import { MeetingListComponent } from './components/meeting-list/meeting-list.component';
 import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LocalDateTimePipe } from './pipes/local-date-time.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MeetingListComponent,
-    MeetingFormComponent
+    MeetingFormComponent,
+    LocalDateTimePipe
   ],
   imports: [
     BrowserModule,

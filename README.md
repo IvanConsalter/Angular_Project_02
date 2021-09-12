@@ -43,3 +43,11 @@ Inside the app-meeting folder, run the commands with npm
 Inside the app-meeting folder, run the commands with npm
 
 - ng g s services/meeting
+
+## Installing Momnent
+
+- npm install moment
+
+## Creating a Pipe Moment
+
+- ng g pipe pipes/local-date-time
