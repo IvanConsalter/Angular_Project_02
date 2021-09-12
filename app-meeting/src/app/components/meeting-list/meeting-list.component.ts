@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Meeting } from 'src/app/model/meeting.model';
 import { MeetingService } from 'src/app/services/meeting.service';
 
@@ -40,4 +41,9 @@ export class MeetingListComponent implements OnInit {
       
     }) 
   }
+
+  getServerPage(event: PageEvent) {
+    this.findAll(event.pageIndex, '', '');
+  }
+
 }
