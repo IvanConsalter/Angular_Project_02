@@ -51,3 +51,9 @@ Inside the app-meeting folder, run the commands with npm
 ## Creating a Pipe Moment
 
 - ng g pipe pipes/local-date-time
+
+## Creating the delete component
+
+Inside the app-meeting folder, run the commands with npm
+
+- ng g c components/delete

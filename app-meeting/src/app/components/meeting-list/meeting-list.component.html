@@ -33,6 +33,7 @@
     <th mat-header-cell *matHeaderCellDef> Ações </th>
     <td mat-cell *matCellDef="let element">
       <button mat-raised-button color="primary" (click)="editMeeting(element.id)">Editar</button>
+      <button mat-raised-button color="warn" (click)="deleteMeeting(element.id)">Deletar</button>
     </td>
   </ng-container>
 

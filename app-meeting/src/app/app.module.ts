@@ -23,6 +23,7 @@ import { MeetingListComponent } from './components/meeting-list/meeting-list.com
 import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalDateTimePipe } from './pipes/local-date-time.pipe';
+import { DeleteComponent } from './components/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LocalDateTimePipe } from './pipes/local-date-time.pipe';
     HomeComponent,
     MeetingListComponent,
     MeetingFormComponent,
-    LocalDateTimePipe
+    LocalDateTimePipe,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { DeleteComponent } from './../delete/delete.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
@@ -57,6 +58,22 @@ export class MeetingListComponent implements OnInit {
       data: {
         idMeeting,
         title: 'Atualizar Reunião'
+      }  
+    })
+
+    dialogRef.afterClosed().subscribe( (response) => {
+      console.log(response);
+      console.log('The dialog was closed!');
+      
+    });
+  }
+
+  deleteMeeting(idMeeting: string) {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      width: '500px',
+      data: {
+        idMeeting,
+        title: 'Deseja excluir esta Reunião?'
       }  
     })
 
