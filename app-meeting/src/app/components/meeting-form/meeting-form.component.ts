@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MeetingService } from 'src/app/services/meeting.service';
 
 @Component({
@@ -11,12 +11,19 @@ import { MeetingService } from 'src/app/services/meeting.service';
 export class MeetingFormComponent implements OnInit {
 
   public meetingForm!: FormGroup;
+  public idMeeting: string;
+  public title: string;
 
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<MeetingFormComponent>,
-    private meetingService: MeetingService
-  ) { }
+    private meetingService: MeetingService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) { 
+    this.idMeeting = data.idMeeting;
+    this.title = data.title;
+    
+  }
 
   ngOnInit(): void {
     this.meetingForm = this.fb.group({
@@ -27,6 +34,10 @@ export class MeetingFormComponent implements OnInit {
       meetingDate: ['', Validators.required],
       meetingTime: ['', Validators.required]
     })
+
+    if(this.idMeeting != null) {
+      this.getById(this.idMeeting);
+    }
   }
 
   save() {
@@ -70,6 +81,27 @@ export class MeetingFormComponent implements OnInit {
     this.dialogRef.close(true);
     this.meetingForm.reset();
     window.location.reload();
+  }
+
+  getById(id: string) {
+    this.meetingService.getById(id).subscribe( (result: any) => {
+
+      //console.log(result);
+      this.meetingForm = this.fb.group({
+        id: [result.id, Validators.required],
+        meetingName: [result.meetingName, Validators.required],
+        meetingSubject: [result.meetingSubject, Validators.required],
+        meetingResponsible: [result.meetingResponsible, Validators.required],
+        meetingDate: [result.meetingDate, Validators.required],
+        meetingTime: [result.meetingTime, Validators.required]
+      })
+
+    },
+    (error) => {
+      console.log('Error: ', error);
+      
+    });
+
   }
 
   cancel(): void {

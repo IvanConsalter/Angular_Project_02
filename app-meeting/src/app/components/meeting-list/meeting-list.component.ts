@@ -1,7 +1,9 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Meeting } from 'src/app/model/meeting.model';
 import { MeetingService } from 'src/app/services/meeting.service';
+import { MeetingFormComponent } from '../meeting-form/meeting-form.component';
 
 
 @Component({
@@ -12,14 +14,17 @@ import { MeetingService } from 'src/app/services/meeting.service';
 
 export class MeetingListComponent implements OnInit {
 
-  displayedColumns: string[] = ['meetingName', 'meetingSubject', 'meetingResponsible', 'meetingDate', 'meetingTime'];
+  displayedColumns: string[] = ['meetingName', 'meetingSubject', 'meetingResponsible', 'meetingDate', 'meetingTime', 'actions'];
   meetings: Array<Meeting> = [];
   length: number = 0;
   totalRecordsPerPage: number = 5;
   meetingNameFind: string = '';
   meetingDateFind: string = '';
 
-  constructor(private meetingService: MeetingService) { }
+  constructor(
+    private meetingService: MeetingService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.findAll(0, '', '');
@@ -46,4 +51,19 @@ export class MeetingListComponent implements OnInit {
     this.findAll(event.pageIndex, '', '');
   }
 
+  editMeeting(idMeeting: string) {
+    const dialogRef = this.dialog.open(MeetingFormComponent, {
+      width: '500px',
+      data: {
+        idMeeting,
+        title: 'Atualizar Reunião'
+      }  
+    })
+
+    dialogRef.afterClosed().subscribe( (response) => {
+      console.log(response);
+      console.log('The dialog was closed!');
+      
+    });
+  }
 }

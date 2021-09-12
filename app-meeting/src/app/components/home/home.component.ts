@@ -16,7 +16,10 @@ export class HomeComponent implements OnInit {
 
   addMeeting() {
     const dialogRef = this.dialog.open(MeetingFormComponent, {
-      width: '500px'
+      width: '500px',
+      data: {
+        title: 'Nova Reunião'
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
