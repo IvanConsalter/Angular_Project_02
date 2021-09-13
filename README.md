@@ -57,3 +57,10 @@ Inside the app-meeting folder, run the commands with npm
 Inside the app-meeting folder, run the commands with npm
 
 - ng g c components/delete
+
+## Layout
+
+![app-meeting-01](https://user-images.githubusercontent.com/50461475/133149770-9801cd6e-68d7-4d23-8f4a-efebf03a59e8.png)
+
+
+![app-meeting-02](https://user-images.githubusercontent.com/50461475/133149772-b77b80f0-01e6-4476-8035-ee36d3e1a58a.png)
