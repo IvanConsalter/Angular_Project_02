@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Meeting } from 'src/app/model/meeting.model';
 import { MeetingService } from 'src/app/services/meeting.service';
 import { MeetingFormComponent } from '../meeting-form/meeting-form.component';
+import * as moment from 'moment';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class MeetingListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.findAll(0, '', '');
+    this.findAll(0, 'meetingDate', '');
   }
 
   findAll(pageNumber: number, sortField: string, filters: string) {
@@ -49,7 +50,7 @@ export class MeetingListComponent implements OnInit {
   }
 
   getServerPage(event: PageEvent) {
-    this.findAll(event.pageIndex, '', '');
+    this.findAll(event.pageIndex, 'meetingDate', '');
   }
 
   editMeeting(idMeeting: string) {
@@ -82,5 +83,23 @@ export class MeetingListComponent implements OnInit {
       console.log('The dialog was closed!');
       
     });
+  }
+
+  findByParameter(){
+    let filters = '';
+    
+    if(this.meetingNameFind != null  && this.meetingNameFind != ''){
+      filters+= 'meetingName='+this.meetingNameFind;
+    }
+
+    if(this.meetingDateFind != null && this.meetingDateFind != '') {
+      if(filters != ''){
+        filters+= ';';
+      }
+
+      let newDate: moment.Moment = moment.utc(this.meetingDateFind).local();
+      filters+= 'meetingDate='+newDate.format("YYYY-MM-DDTHH:mm:ss")+'.000Z';
+    }
+    this.findAll(0,'meetingDate',filters);
   }
 }

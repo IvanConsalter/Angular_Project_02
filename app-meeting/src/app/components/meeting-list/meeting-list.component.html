@@ -1,49 +1,61 @@
-<table mat-table [dataSource]="meetings" class="mat-elevation-z8 container">
+<div class="container">
+  <div class="form-filter">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome da Reunião</mat-label>
+      <input matInput placeholder="" [(ngModel)]="meetingNameFind">
+    </mat-form-field>&nbsp;
+    <mat-form-field>
+      <mat-label>Data da Reunião</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="meetingDateFind">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>&nbsp;
+    <button mat-raised-button color="primary" (click)="findByParameter()">Filtrar</button>&nbsp;
+  </div>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="meetingName">
-    <th mat-header-cell *matHeaderCellDef> Nome da Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingName}} </td>
-  </ng-container>
+  <table mat-table [dataSource]="meetings" class="mat-elevation-z8">
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="meetingSubject">
-    <th mat-header-cell *matHeaderCellDef> Assunto da Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingSubject}} </td>
-  </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="meetingName">
+      <th mat-header-cell *matHeaderCellDef> Nome da Reunião </th>
+      <td mat-cell *matCellDef="let element"> {{element.meetingName}} </td>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="meetingResponsible">
-    <th mat-header-cell *matHeaderCellDef> Rensponsável pela Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingResponsible}} </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="meetingSubject">
+      <th mat-header-cell *matHeaderCellDef> Assunto da Reunião </th>
+      <td mat-cell *matCellDef="let element"> {{element.meetingSubject}} </td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="meetingDate">
-    <th mat-header-cell *matHeaderCellDef> Data da Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingDate | localDateTime}} </td>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="meetingResponsible">
+      <th mat-header-cell *matHeaderCellDef> Rensponsável pela Reunião </th>
+      <td mat-cell *matCellDef="let element"> {{element.meetingResponsible}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="meetingTime">
-    <th mat-header-cell *matHeaderCellDef> Hora da Reunião </th>
-    <td mat-cell *matCellDef="let element"> {{element.meetingTime}} </td>
-  </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="meetingDate">
+      <th mat-header-cell *matHeaderCellDef> Data da Reunião </th>
+      <td mat-cell *matCellDef="let element"> {{element.meetingDate | localDateTime}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Ações </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary" (click)="editMeeting(element.id)">Editar</button>
-      <button mat-raised-button color="warn" (click)="deleteMeeting(element.id)">Deletar</button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="meetingTime">
+      <th mat-header-cell *matHeaderCellDef> Hora da Reunião </th>
+      <td mat-cell *matCellDef="let element"> {{element.meetingTime}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator class="container" 
-  [length]="length"
-  [pageSize]="totalRecordsPerPage" 
-  (page)="getServerPage($event)"
-  aria-label="Select page">
-</mat-paginator>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="editMeeting(element.id)">Editar</button>
+        <button mat-raised-button color="warn" (click)="deleteMeeting(element.id)">Deletar</button>
+      </td>
+    </ng-container>
 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator class="container" [length]="length" [pageSize]="totalRecordsPerPage" (page)="getServerPage($event)"
+    aria-label="Select page">
+  </mat-paginator>
+</div>
